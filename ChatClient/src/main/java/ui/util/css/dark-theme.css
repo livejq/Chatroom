@@ -1,0 +1,566 @@
+/* 方便更换主题 */
+.root {
+    -fx-primary: #17212b;
+    -fx-secondary: #17bd9b;
+    -fx-secondary-dark: #009688;
+    -fx-third: #121B26;
+    -fx-top-pane: #1C1C1C;
+    -fx-mac-close: #ff3030;
+    -fx-mac-minimize: YELLOW;
+    -fx-primary-text: WHITE;
+    -fx-wrong-text: #ef5350;
+    -fx-normal-text: #797D7F;
+    -fx-progress-bgcolor: #b31abf;
+    -fx-password-low: #FF0000;
+    -fx-password-middle: #ffe100;
+    -fx-password-strong: #00CD00;
+    -fx-primary-btn: #4776e6;
+    -fx-secondary-btn: #8e54e9;
+    -fx-third-btn: #24202D;
+    -fx-msg-scroll-thumb: #797D7F;
+    -fx-emoji-scroll-thumb: #4776e6;
+    -fx-dialog-layout: #1C1C1C;
+    -fx-dialog-btn: #009688;
+    -fx-dialog-text: WHITE;
+}
+
+/*JavaFX8无效
+@font-face {
+    font-family: "Segoe";
+    src: url("/fonts/SegoeUIEmoji.ttf");
+}
+*/
+
+/* public */
+.svgDecoration {
+    -fx-shape: "M3 0,9 0,9 9,0 9,0 3,z";
+    -fx-background-color: -fx-primary;
+}
+
+.title {
+    -fx-font-size: 18px;
+    -fx-text-fill: -fx-primary-text;
+}
+
+.labelNormal {
+    -fx-font-size: 16px;
+    -fx-text-fill: -fx-primary-text;
+}
+
+.fieldNormal {
+    -fx-text-fill: -fx-primary-text;
+    -jfx-focus-color: -fx-secondary;
+    -jfx-unfocus-color: -fx-primary-text;
+}
+
+.topPane {
+    -fx-background-color: -fx-top-pane;
+}
+
+.txtLink {
+    -fx-fill: -fx-primary-text;
+    -fx-cursor: hand;
+}
+
+.txtLink:hover {
+    -fx-underline: true;
+}
+
+.txtNormal {
+    -fx-fill: -fx-primary-text;
+}
+
+.btnNormal {
+    -fx-text-fill: -fx-primary-text;
+    -fx-background-color: -fx-secondary-dark;
+    -fx-opacity: 0.9;
+}
+
+.btnNormal:hover {
+    -fx-opacity: 1.0;
+    -fx-cursor: hand;
+}
+
+#stackPane {
+    -fx-background-color: linear-gradient(to left, -fx-primary, -fx-secondary);
+}
+
+#btnClose {
+    -fx-cursor: hand;
+    -fx-font-size: 17px;
+    -fx-fill: -fx-mac-close;
+}
+
+#btnMinimize {
+    -fx-cursor: hand;
+    -fx-font-size: 17px;
+    -fx-fill: -fx-mac-minimize;
+}
+
+#btnLogin, #btnCreate, #btnCancel, #btnReturn {
+    -fx-cursor: hand;
+    -fx-text-fill: -fx-primary-text;
+    -fx-background-color: linear-gradient(to left, -fx-primary-btn, -fx-secondary-btn);
+    -fx-background-radius: .8em;
+    -fx-font-size: 17px;
+}
+
+#btnLogin:hover, #btnCreate:hover, #btnCancel:hover, #btnReturn:hover {
+    -fx-background-color: linear-gradient(to right, -fx-primary-btn, -fx-secondary-btn);
+}
+
+
+/* login */
+
+/* createAccount */
+.rdbStyle {
+    -jfx-selected-color: -fx-secondary;
+    -jfx-unselected-color: -fx-primary-text;
+}
+
+#dtPkr > * {
+    -fx-text-fill: -fx-primary-text;
+    -jfx-focus-color: -fx-secondary;
+    -jfx-unfocus-color: -fx-primary-text;
+}
+
+
+#createAccount {
+    -fx-color: -fx-primary-text;
+    -fx-fill: -fx-primary-text;
+    -fx-font-size: 12px;
+}
+
+.low-password {
+    -fx-fill: -fx-passwd-low;
+}
+
+.middle-password {
+    -fx-fill: -fx-passwd-middle;
+}
+
+.strong-password {
+    -fx-fill: -fx-passwd-strong;
+}
+
+/* dialog */
+.dialog-layout {
+    -fx-background-color: -fx-dialog-layout;
+}
+
+.jfx-dialog-layout * {
+    -fx-text-fill: -fx-dialog-text;
+}
+
+.dialog-button {
+    -fx-background-color: -fx-dialog-btn;
+    -fx-text-fill: -fx-dialog-text;
+    -fx-background-radius: .8em;
+    -fx-font-size: 14px;
+    -fx-opacity: 0.9;
+}
+
+.dialog-button:hover {
+    -fx-opacity: 1.0;
+}
+
+
+/* loginProgress */
+.jfx-progress-bar > .bar {
+    -fx-background-color: linear-gradient(to right, -fx-primary-btn, -fx-secondary-btn);
+}
+
+
+/* qrCode */
+#qrCode {
+    -fx-background-image: url("../images/icons/qr-code.png");
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-cursor: hand;
+}
+
+
+/* Special */
+.wrong-credentials {
+    -jfx-unfocus-color: -fx-wrong-text;
+    -jfx-focus-color: -fx-wrong-text;
+}
+
+.password-low {
+    -fx-fill: -fx-password-low;
+}
+
+.password-middle {
+    -fx-fill: -fx-password-middle;
+}
+
+.password-strong {
+    -fx-fill: -fx-password-strong;
+}
+
+
+/* chatroom */
+.borderPane {
+    -fx-background-image: url("../images/bg/dark-bg01.png");
+}
+
+#leftAnchorPane {
+    -fx-background-color: rgba(32, 29, 30, 0.5);
+}
+
+#drawerPane {
+    -fx-background-color: transparent;
+}
+
+.clientListScroll {
+    -fx-background-color: transparent;
+}
+
+.clientListScroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.clientListScroll .scroll-bar:vertical {
+    -fx-background-color: inherit;
+
+}
+
+.clientListScroll .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+
+}
+
+.clientListScroll .scroll-bar:vertical .increment-button,
+.clientListScroll .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 0 10 0;
+
+}
+
+.clientListScroll .scroll-bar .increment-arrow,
+.clientListScroll .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+.clientListScroll .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+
+}
+
+.clientListScroll:hover .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-background-insets: 4, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+.clientListBox {
+    -fx-background-color: transparent;
+}
+
+.clientListBox, .clientListBox > .viewport {
+    -fx-background-color: transparent;
+}
+
+.clientListBox {
+    -fx-background-color: transparent;
+}
+
+.clientListBox > .viewport {
+    -fx-background-color: transparent;
+}
+
+.clientListBox .scroll-bar:vertical {
+    -fx-background-color: inherit;
+    -fx-unit-increment: 20;
+    -fx-block-increment: 20;
+}
+
+.clientListBox .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.clientListBox .scroll-bar:vertical .increment-button,
+.clientListBox .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 0 10 0;
+
+}
+
+.clientListBox .scroll-bar .increment-arrow,
+.clientListBox .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+.clientListBox .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+
+}
+
+.clientListBox:hover .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-msg-scroll-thumb;
+    -fx-background-insets: 4, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+#rightAnchorPane {
+    -fx-background-color: transparent;
+}
+
+#msgScrollPane, #msgScrollPane > .viewport {
+    -fx-background-color: transparent;
+}
+
+#msgScrollPane {
+    -fx-background-color: transparent;
+}
+
+#msgScrollPane > .viewport {
+    -fx-background-color: transparent;
+}
+
+#msgScrollPane .scroll-bar:vertical {
+    -fx-background-color: inherit;
+    -fx-unit-increment: 20;
+    -fx-block-increment: 20;
+}
+
+#msgScrollPane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+#msgScrollPane .scroll-bar:vertical .increment-button,
+#msgScrollPane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 0 10 0;
+
+}
+
+#msgScrollPane .scroll-bar .increment-arrow,
+#msgScrollPane .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+#msgScrollPane .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+
+}
+
+#msgScrollPane:hover .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-msg-scroll-thumb;
+    -fx-background-insets: 4, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+.bottomPaneArea {
+    -fx-background-color: rgba(32, 29, 30, 0.5);
+}
+
+.bottomTextArea {
+    -fx-wrap-text: true;
+    -fx-text-fill: -fx-primary-text;
+    -jfx-focus-color: -fx-secondary;
+    -jfx-unfocus-color: -fx-primary-text;
+}
+
+.bottomBtnArea {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+}
+
+#sideMenu {
+    -fx-fill: -fx-primary-text;
+    -fx-cursor: hand;
+}
+
+#msgArea {
+    -fx-font-family: "微软雅黑, Arial Black, Arial";
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+}
+
+#msgArea .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+#msgArea .scroll-pane > .viewport, #msgArea > .viewport {
+    -fx-background-color: transparent;
+}
+
+#msgArea .scroll-pane .scroll-bar:vertical, #msgArea .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+#msgArea .scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+#msgArea .scroll-pane .scroll-bar:vertical .increment-button,
+#msgArea .scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+#msgArea .scroll-pane .scroll-bar .increment-arrow,
+#msgArea .scroll-pane .scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+#msgArea .scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: transparent;
+}
+
+.emojiAnchorPane {
+    -fx-background-color: -fx-primary;
+}
+
+.emojiShowPane {
+    -fx-background-color: transparent;
+    -fx-padding: 13 0 0 10;
+}
+
+.emojiScrollPane {
+    -fx-background-color: transparent;
+}
+
+.emojiScrollPane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.emojiScrollPane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.emojiScrollPane .scroll-bar:vertical .increment-button,
+.emojiScrollPane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+}
+
+.emojiScrollPane .scroll-bar .increment-arrow,
+.emojiScrollPane .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+.emojiScrollPane .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-emoji-scroll-thumb;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0.5em;
+
+}
+
+
+/* bubble */
+.lineBoxRight {
+    -fx-pref-width: 365px;
+    -fx-padding: 20 10 20 10;
+    -fx-alignment: center-right;
+}
+
+.lineBoxLeft {
+    -fx-pref-width: 365px;
+    -fx-padding: 20 10 20 10;
+    -fx-alignment: center-left;
+}
+
+#bubblePublicPane {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 1em 1em 1em 0;
+}
+
+#bubbleSelfPane {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 1em 1em 0 1em;
+}
+
+.textFlow {
+    -fx-padding: 5 10 1 15;
+}
+
+.emojiTextPane {
+    -fx-wrap-text: true;
+}
+
+.bubbleMsgText {
+    -fx-font-size: 15px;
+    -fx-font-weight: lighter;
+    -fx-font-family: "微软雅黑, Arial Black, Arial";
+    -fx-fill: -fx-primary-text;
+}
+
+.bubblePolygon {
+    -fx-fill: -fx-primary;
+}
+
+.nameLabel {
+    -fx-padding: 10 10 5 15;
+    -fx-font-size: 15px;
+    -fx-text-fill: -fx-secondary;
+}
+
+.timeLabel {
+    -fx-padding: 1 10 3 0;
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-primary-text;
+    -fx-opacity: 0.80;
+}
+
+/* onlinePane */
+#onlineNameLabel {
+    -fx-padding: 15 0 0 8;
+    -fx-font-size: 15px;
+    -fx-text-fill: -fx-primary-text;
+}
+
+.onlineContainer {
+    -fx-background-color: inherit;
+    -fx-alignment: center-left;
+    -fx-spacing: 10px;
+    -fx-padding: 0 10 0 0;
+}
+
+.onlineContainer:hover {
+    -fx-border-color: linear-gradient(to left,rgba(255,255,255,0),rgba(255,255,255,0.8)) transparent
+    linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,0.8)) transparent;
+    -fx-border-width: 2;
+}
+
+.onlineContainer:hover .circle {
+    -fx-effect: dropshadow(three-pass-box, red, 2, 2, 0, 0);
+}
+
+/* funcSide */
+.avatarPane {
+    -fx-background-image: url("../images/bg/dark-bg01.png");
+}
+
+.funcSidePane {
+    -fx-background-color: -fx-primary;
+}
+
+.normalLabel {
+    -fx-text-fill: -fx-normal-text;
+}
+
+.normalLink {
+    -fx-text-fill: -fx-normal-text;
+}
+
+.normalLink:hover {
+    -fx-underline: true;
+    -fx-cursor: hand;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<StackPane prefHeight="380.0" prefWidth="480.0" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.Login">
+    <StackPane fx:id="stackPane" prefHeight="345.0" prefWidth="480.0" StackPane.alignment="BOTTOM_LEFT">
+        <AnchorPane fx:id="loginPane" prefHeight="345.0" prefWidth="480.0" styleClass="svgDecoration">
+            <Label layoutX="24.0" layoutY="43.0" styleClass="title" text="聊吧">
+                <effect>
+                    <Glow level="0.8" />
+                </effect>
+            </Label>
+            <Text fx:id="createAccount" layoutX="148.0" layoutY="225.0" onMouseClicked="#createAccount" styleClass="txtLink" text="没有账号？" />
+            <Text fx:id="findPassword" layoutX="290.0" layoutY="225.0" onMouseClicked="#handleFindPassword" styleClass="txtLink" text="忘记密码" />
+            <JFXButton fx:id="btnLogin" disable="true" layoutX="150.0" layoutY="266.0" onMouseClicked="#handleLogin" prefHeight="35.0" prefWidth="194.0" text="登录" />
+            <Pane layoutX="400.0" layoutY="35.0" prefHeight="80.0" prefWidth="80.0">
+                <Button fx:id="qrCode" layoutY="3.0" onAction="#qrCodeAction" prefHeight="70.0" prefWidth="70.0" />
+            </Pane>
+            <Pane layoutX="114.0" layoutY="94.0" prefHeight="113.0" prefWidth="266.0">
+                <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="75.0" layoutY="9.0" prefHeight="23.0" prefWidth="150.0" promptText="邮箱" styleClass="fieldNormal" />
+                <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="75.0" layoutY="61.0" prefHeight="29.0" prefWidth="150.0" promptText="密码" styleClass="fieldNormal" />
+                <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT_CIRCLE" layoutX="27.0" layoutY="30.0" size="32" />
+                <MaterialDesignIconView fill="WHITE" glyphName="LOCK_OUTLINE" layoutX="27.0" layoutY="88.0" size="32" />
+            </Pane><!-- 后面会覆盖前面 -->
+        </AnchorPane>
+    </StackPane>
+    <Pane maxHeight="-Infinity" maxWidth="-Infinity" onMouseDragged="#handleMouseDragged" onMousePressed="#handleMousePressed" prefHeight="35.0" prefWidth="480.0" styleClass="topPane" StackPane.alignment="TOP_LEFT">
+        <MaterialDesignIconView fx:id="btnClose" glyphName="CLOSE_CIRCLE" layoutX="18.0" layoutY="23.0" onMouseClicked="#handleWindowClosed" />
+        <MaterialDesignIconView fx:id="btnMinimize" glyphName="MINUS_CIRCLE" layoutX="49.0" layoutY="23.0" onMouseClicked="#handleWindowMinimized" />
+    </Pane>
+</StackPane>

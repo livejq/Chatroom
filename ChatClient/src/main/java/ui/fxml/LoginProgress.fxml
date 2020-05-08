@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="loginProgressPane" prefHeight="345.0" prefWidth="480.0" styleClass="svgDecoration" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.LoginProgress">
+    <Label layoutX="24.0" layoutY="43.0" styleClass="title" text="聊吧">
+        <effect>
+            <Glow level="0.8" />
+        </effect>
+    </Label>
+    <JFXButton fx:id="btnCancel" layoutX="150.0" layoutY="266.0" onAction="#cancelAction" prefHeight="35.0" prefWidth="194.0" text="取消" />
+    <Pane layoutX="86.0" layoutY="121.0" prefHeight="68.0" prefWidth="322.0">
+        <JFXProgressBar fx:id="progressBar" layoutX="12.0" layoutY="48.0" prefHeight="5.0" prefWidth="297.0" />
+    </Pane>
+    <VBox alignment="CENTER" layoutX="187.0" layoutY="189.0" prefHeight="35.0" prefWidth="120.0">
+        <Text fx:id="txtProgress" styleClass="txtNormal" text="加载中... 100%" textAlignment="CENTER" />
+    </VBox>
+</AnchorPane>

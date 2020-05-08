@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<HBox prefHeight="60.0" prefWidth="260.0" styleClass="onlineContainer" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.OnlinePane">
+   <Circle fx:id="avatar" radius="26.0">
+      <HBox.margin>
+         <Insets bottom="4.0" left="15.0" right="4.0" top="4.0" />
+      </HBox.margin>
+   </Circle>
+   <HBox prefHeight="100.0" prefWidth="200.0">
+      <VBox alignment="BOTTOM_RIGHT">
+         <HBox fx:id="onlineTopBox" prefHeight="100.0" prefWidth="200.0">
+            <Label fx:id="onlineNameLabel" prefHeight="20.0" prefWidth="163.0" text="我是一个没有名字的机器人"/>
+         </HBox>
+      </VBox>
+      <VBox alignment="BOTTOM_RIGHT">
+         <padding>
+            <Insets bottom="5.0" right="4.0"/>
+         </padding>
+         <FontAwesomeIconView fill="#00cd00" glyphName="SIGNAL" size="20" strokeWidth="3.0" textAlignment="CENTER"/>
+      </VBox>
+   </HBox>
+</HBox>

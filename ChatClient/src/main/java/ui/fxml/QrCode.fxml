@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="qrCodePane" prefHeight="345.0" prefWidth="480.0" styleClass="svgDecoration" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.QrCode">
+    <Label layoutX="24.0" layoutY="43.0" styleClass="title" text="聊吧">
+        <effect>
+            <Glow level="0.8" />
+        </effect>
+    </Label>
+    <JFXButton fx:id="btnReturn" layoutX="150.0" layoutY="266.0" onAction="#btnReturnAction" prefHeight="35.0" prefWidth="194.0" text="返回" />
+    <Pane fx:id="qrCodeScan" layoutX="177.0" layoutY="58.0" prefHeight="140.0" prefWidth="140.0" />
+    <Text layoutX="223.0" layoutY="230.0" styleClass="txtNormal" text="微信打赏" />
+</AnchorPane>

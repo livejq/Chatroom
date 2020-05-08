@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="BOTTOM_CENTER" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.EmojiSelector">
+    <AnchorPane styleClass="emojiAnchorPane" maxHeight="160.0" prefHeight="160.0" prefWidth="255.0">
+        <HBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="20">
+                <HBox.margin>
+                    <Insets left="10.0" top="6.0"/>
+                </HBox.margin>
+          </FontAwesomeIconView>
+            <JFXTextField fx:id="searchTextField" prefHeight="28.0" prefWidth="205.0" styleClass="fieldNormal">
+                <HBox.margin>
+                    <Insets left="5.0"/>
+                </HBox.margin>
+          </JFXTextField>
+        </HBox>
+        <ScrollPane fx:id="searchScrollPane" styleClass="emojiScrollPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+            <FlowPane fx:id="searchFlowPane" maxWidth="245.0" prefWidth="245.0" styleClass="emojiShowPane"/>
+        </ScrollPane>
+        <ScrollPane fx:id="showScrollPane" styleClass="emojiScrollPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+            <FlowPane fx:id="showFlowPane" maxWidth="245.0" prefWidth="245.0" styleClass="emojiShowPane"/>
+        </ScrollPane>
+    </AnchorPane>
+</VBox>
