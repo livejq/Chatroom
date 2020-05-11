@@ -3,62 +3,56 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.control.Label?>
-<StackPane fx:id="mainPane" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.241"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.Chatroom">
+
+<StackPane fx:id="mainPane" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.Chatroom">
     <BorderPane fx:id="borderPane" prefHeight="660.0" prefWidth="640.0" styleClass="borderPane">
         <top>
-            <Pane onMouseDragged="#handleMouseDragged" onMousePressed="#handleMousePressed" prefHeight="35.0"
-                  styleClass="topPane" BorderPane.alignment="CENTER">
-                <MaterialDesignIconView fx:id="btnClose" glyphName="CLOSE_CIRCLE" layoutX="18.0" layoutY="23.0"
-                                        onMouseClicked="#handleWindowClosed"/>
-                <MaterialDesignIconView fx:id="btnMinimize" glyphName="MINUS_CIRCLE" layoutX="49.0" layoutY="23.0"
-                                        onMouseClicked="#handleWindowMinimized"/>
+            <Pane onMouseDragged="#handleMouseDragged" onMousePressed="#handleMousePressed" prefHeight="35.0" styleClass="topPane" BorderPane.alignment="CENTER">
+                <MaterialDesignIconView fx:id="btnClose" glyphName="CLOSE_CIRCLE" layoutX="18.0" layoutY="23.0" onMouseClicked="#handleWindowClosed" />
+                <MaterialDesignIconView fx:id="btnMinimize" glyphName="MINUS_CIRCLE" layoutX="49.0" layoutY="23.0" onMouseClicked="#handleWindowMinimized" />
             </Pane>
         </top>
         <left>
             <AnchorPane fx:id="leftAnchorPane" prefWidth="260.0" BorderPane.alignment="CENTER">
-                <ScrollPane fx:id="searchClientListScroll" styleClass="clientListScroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-                    <VBox fx:id="searchClientListBox" styleClass="clientListBox"/>
+                <ScrollPane fx:id="searchClientListScroll" styleClass="clientListScroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                    <VBox fx:id="searchClientListBox" styleClass="clientListBox" />
                 </ScrollPane>
-                <ScrollPane fx:id="showClientListScroll" styleClass="clientListScroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-                    <VBox fx:id="showClientListBox" styleClass="clientListBox"/>
+                <ScrollPane fx:id="showClientListScroll" styleClass="clientListScroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                    <VBox fx:id="showClientListBox" styleClass="clientListBox" />
                 </ScrollPane>
-                <Pane prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                      AnchorPane.topAnchor="0.0">
-                    <TextField fx:id="searchUser" onKeyPressed="#handleSearchField" layoutX="74.0" layoutY="15.0" prefHeight="27.0" prefWidth="161.0" promptText="搜索用户"/>
-                    <MaterialDesignIconView fx:id="sideMenu" onMouseClicked="#showFuncSide" glyphName="MENU" layoutX="24.0" layoutY="41.0"
-                                            size="35"/>
+                <Pane prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <TextField fx:id="searchUser" layoutX="74.0" layoutY="15.0" onKeyPressed="#handleSearchField" prefHeight="27.0" prefWidth="161.0" promptText="搜索用户" />
+                    <MaterialDesignIconView fx:id="sideMenu" glyphName="MENU" layoutX="24.0" layoutY="41.0" onMouseClicked="#showFuncSide" size="35" />
                 </Pane>
                 <AnchorPane fx:id="funcSide" prefHeight="625.0" prefWidth="260.0" styleClass="funcSidePane">
-                    <AnchorPane layoutX="30.0" layoutY="14.0" prefHeight="200.0" styleClass="avatarPane" AnchorPane.leftAnchor="0.0"
-                                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <VBox layoutX="28.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0"
-                              AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="40.0">
-                            <Circle fx:id="avatar" fill="DODGERBLUE" radius="26.0" stroke="BLACK" strokeType="INSIDE"/>
+                    <AnchorPane layoutX="30.0" layoutY="14.0" prefHeight="200.0" styleClass="avatarPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="28.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="40.0">
+                            <Circle fx:id="avatar" fill="DODGERBLUE" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
                             <Label fx:id="sideNameLabel" maxWidth="180.0" styleClass="labelNormal" text="我是一个没有名字的机器人">
                                 <VBox.margin>
-                                    <Insets top="50.0"/>
+                                    <Insets top="50.0" />
                                 </VBox.margin>
                             </Label>
-                            <Label fx:id="sideEmailLabel" maxWidth="180.0" prefHeight="20.0" prefWidth="158.0" styleClass="labelNormal"
-                                   text="livejq@qq.com"/>
+                            <Label fx:id="sideEmailLabel" maxWidth="180.0" prefHeight="20.0" prefWidth="158.0" styleClass="labelNormal" text="livejq@qq.com" />
                         </VBox>
                     </AnchorPane>
-                    <VBox alignment="BOTTOM_RIGHT" layoutX="141.0" layoutY="571.0" spacing="10.0">
-                        <Label styleClass="normalLabel" text="聊吧"/>
+                    <VBox alignment="BOTTOM_RIGHT" layoutX="141.0" layoutY="571.0" spacing="10.0" styleClass="appInfo">
+                        <Label styleClass="normalLabel" text="聊吧" />
                         <HBox alignment="CENTER">
-                            <Label styleClass="normalLabel" text="Version 1.0-"/>
-                            <Label fx:id="linkToAbout" styleClass="normalLink" text="About"/>
+                            <Label styleClass="normalLabel" text="Version 1.0-" />
+                            <Label fx:id="linkToAbout" styleClass="normalLink" text="About" />
                         </HBox>
                     </VBox>
                 </AnchorPane>
@@ -66,39 +60,32 @@
         </left>
         <center>
             <AnchorPane fx:id="rightAnchorPane" BorderPane.alignment="CENTER">
-                <ScrollPane fx:id="msgScrollPane" onMouseClicked="#hideFuncSide" AnchorPane.bottomAnchor="44.0"
-                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <VBox fx:id="chatBox"/>
+                <ScrollPane fx:id="msgScrollPane" onMouseClicked="#hideFuncSide" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <VBox fx:id="chatBox" />
                 </ScrollPane>
-                <HBox prefHeight="44.0" spacing="5.0" styleClass="bottomPaneArea" AnchorPane.bottomAnchor="0.0"
-                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                    <JFXButton fx:id="attachFile" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0"
-                               prefWidth="50.0" styleClass="bottomBtnArea">
+                <HBox prefHeight="44.0" spacing="5.0" styleClass="bottomPaneArea" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <JFXButton fx:id="attachFile" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="50.0" styleClass="bottomBtnArea">
                         <graphic>
-                            <FontAwesomeIconView fill="WHITE" glyphName="PAPERCLIP" size="26"/>
+                            <FontAwesomeIconView fill="WHITE" glyphName="PAPERCLIP" size="26" />
                         </graphic>
                     </JFXButton>
                     <JFXTextArea fx:id="msgArea" prefWidth="210.0" promptText="来冒个泡吧 (ctrl+Enter)" styleClass="bottomTextArea">
                         <HBox.margin>
-                            <Insets top="5.0"/>
+                            <Insets top="5.0" />
                         </HBox.margin>
                     </JFXTextArea>
-                    <JFXButton fx:id="btnEmoji" alignment="CENTER" contentDisplay="CENTER"
-                               onMouseEntered="#handleEmojiEntered" onMouseExited="#handleEmojiExited" prefHeight="44.0"
-                               prefWidth="50.0" styleClass="bottomBtnArea">
+                    <JFXButton fx:id="btnEmoji" alignment="CENTER" contentDisplay="CENTER" onMouseEntered="#handleEmojiEntered" onMouseExited="#handleEmojiExited" prefHeight="44.0" prefWidth="50.0" styleClass="bottomBtnArea">
                         <graphic>
-                            <MaterialDesignIconView fill="WHITE" glyphName="EMOTICON" size="26"/>
+                            <MaterialDesignIconView fill="WHITE" glyphName="EMOTICON" size="26" />
                         </graphic>
                     </JFXButton>
-                    <JFXButton fx:id="btnSend" alignment="CENTER" contentDisplay="CENTER" onAction="#sendAction"
-                               prefHeight="44.0" prefWidth="50.0" styleClass="bottomBtnArea">
+                    <JFXButton fx:id="btnSend" alignment="CENTER" contentDisplay="CENTER" onAction="#sendAction" prefHeight="44.0" prefWidth="50.0" styleClass="bottomBtnArea">
                         <graphic>
-                            <MaterialDesignIconView fill="WHITE" glyphName="SEND" size="26"/>
+                            <MaterialDesignIconView fill="WHITE" glyphName="SEND" size="26" />
                         </graphic>
                     </JFXButton>
                 </HBox>
-                <Pane fx:id="emojiList" layoutX="50.0" layoutY="410.0" onMouseEntered="#handleEmojiPaneEntered"
-                      onMouseExited="#handleEmojiPaneExited" visible="false">
+                <Pane fx:id="emojiList" layoutX="50.0" layoutY="425.0" onMouseEntered="#handleEmojiPaneEntered" onMouseExited="#handleEmojiPaneExited" visible="false">
                 </Pane>
             </AnchorPane>
         </center>

@@ -36,7 +36,7 @@ import util.CustomEmojiTask;
 import util.LittleUtil;
 import util.RegexUtil;
 
-import java.awt.Desktop;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -421,8 +421,12 @@ public class Chatroom implements ChatObserver {
     private void handleWindowClosed(MouseEvent event) {
 //        Runtime.getRuntime().exit(0);
 //        ((Stage) mainPane.getScene().getWindow()).close();
-        //隐藏到托盘
-        primaryStage.close();
+        if (SystemTray.isSupported()) {
+            //隐藏到托盘
+            primaryStage.close();
+        }else {
+            Runtime.getRuntime().exit(0);
+        }
     }
 
     public void setPrimaryStage(Stage primaryStage) {
@@ -500,7 +504,10 @@ public class Chatroom implements ChatObserver {
         } catch (IOException e) {
             logger.error("初始化聊天室失败！", e);
         }
-        //将聊天窗口绑定到托盘
-        LaunchTray.bindStage(this.primaryStage, chatController, chatObserver, user.getEmail());
+        //Linux不支持托盘
+        if (SystemTray.isSupported()) {
+            //将聊天窗口绑定到托盘
+            LaunchTray.bindStage(this.primaryStage, chatController, chatObserver, user.getEmail());
+        }
     }
 }

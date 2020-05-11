@@ -10,9 +10,8 @@ import ui.view.LoaderMaker;
 import java.io.IOException;
 
 /**
+ * 客户端启动器
  * @author livejq
- * @program ChatRoom
- * @description 客户端启动器
  * @since 2020/4/13
  **/
 public class Launcher extends Application {

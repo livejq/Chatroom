@@ -552,6 +552,10 @@
     -fx-background-color: -fx-primary;
 }
 
+.appInfo {
+    -fx-padding: 10 15 10 0;
+}
+
 .normalLabel {
     -fx-text-fill: -fx-normal-text;
 }

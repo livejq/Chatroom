@@ -38,30 +38,31 @@ public class MyTray {
         if (!SystemTray.isSupported()) {
             //不支持系统托盘
             supported = false;
+        }else {
+            //不能选择icon格式的图片，要使用16*16的png格式的图片
+            Image image = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("../util/images/icons/chatroom-tray.png"));
+            tray = SystemTray.getSystemTray();
+
+            showItem = new MenuItem("Open");
+            exitItem = new MenuItem("Exit");
+            popup = new PopupMenu();
+
+            //添加菜单组件
+            popup.add(showItem);
+            popup.add(exitItem);
+
+            //创建托盘图标
+            trayIcon = new TrayIcon(image, "聊吧", popup);
+
+            //设置图标尺寸自动适应
+            trayIcon.setImageAutoSize(true);
+            try {
+                tray.add(trayIcon);
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
+            supported = true;
         }
-        //不能选择icon格式的图片，要使用16*16的png格式的图片
-        Image image = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("../util/images/icons/chatroom-tray.png"));
-        tray = SystemTray.getSystemTray();
-
-        showItem = new MenuItem("Open");
-        exitItem = new MenuItem("Exit");
-        popup = new PopupMenu();
-
-        //添加菜单组件
-        popup.add(showItem);
-        popup.add(exitItem);
-
-        //创建托盘图标
-        trayIcon = new TrayIcon(image, "聊吧", popup);
-
-        //设置图标尺寸自动适应
-        trayIcon.setImageAutoSize(true);
-        try {
-            tray.add(trayIcon);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-        supported = true;
     }
 
     public MyTray() {}
