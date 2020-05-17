@@ -9,10 +9,10 @@ import javafx.fxml.FXMLLoader;
  **/
 public class LoaderMaker {
 
-    public static FXMLLoader createLoader(String path) {
+    public FXMLLoader createLoader(String path) {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(LoaderMaker.class.getResource(path));
+        loader.setLocation(this.getClass().getResource(path));
 
         return loader;
     }

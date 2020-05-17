@@ -28,7 +28,8 @@ public class TransferData {
      */
     public static void loadPaneByPathWithData(String path, StackPane parentPane, Pane removedPane,
                                               Map<String, Object> message, Map<String, Pane> storage) throws IOException {
-        FXMLLoader loader = LoaderMaker.createLoader(path);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(TransferData.class.getResource(path));
         Pane childrenPane = loader.load();
         //必须要在load()方法之后调用controller,避免空指针
         LoginProgress loginProgress = loader.getController();

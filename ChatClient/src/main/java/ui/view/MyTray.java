@@ -40,7 +40,7 @@ public class MyTray {
             supported = false;
         }else {
             //不能选择icon格式的图片，要使用16*16的png格式的图片
-            Image image = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("../util/images/icons/chatroom-tray.png"));
+            Image image = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/util/images/icons/chatroom-tray.png"));
             tray = SystemTray.getSystemTray();
 
             showItem = new MenuItem("Open");

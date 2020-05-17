@@ -18,7 +18,6 @@ import javafx.stage.StageStyle;
 import model.User;
 import observer.ChatObserver;
 import observerImpl.ChatObserverImpl;
-import ui.view.LoaderMaker;
 import ui.view.PaneLayer;
 
 import java.io.File;
@@ -62,13 +61,14 @@ public class LoginProgress {
         txtProgress.textProperty().bind(progressTask.messageProperty());
         progressTask.setOnSucceeded(event -> {
             Stage chatroom = new Stage();
-            FXMLLoader fxmlLoader = LoaderMaker.createLoader("../fxml/Chatroom.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/fxml/Chatroom.fxml"));
             try {
-                chatroom.setScene(new Scene(fxmlLoader.load()));
+                chatroom.setScene(new Scene(loader.load()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Chatroom chatroomController = fxmlLoader.getController();
+            Chatroom chatroomController = loader.getController();
             chatroomController.setPrimaryStage(chatroom);
             chatroomController.getSideEmailLabel().setText(user.getEmail());
             chatroomController.getSideNameLabel().setText(user.getNickname());
@@ -95,7 +95,7 @@ public class LoginProgress {
             }
 
             chatroom.initStyle(StageStyle.TRANSPARENT);
-            chatroom.getIcons().add(new Image("/ui/util/images/icons/chatroom.png"));
+            chatroom.getIcons().add(new Image("/util/images/icons/chatroom.png"));
             ((Stage) btnCancel.getScene().getWindow()).close();
             System.out.println("初始化完毕!");
             chatroom.show();

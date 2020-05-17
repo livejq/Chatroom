@@ -6,11 +6,8 @@ import java.util.Queue;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import ui.view.LetterSpaceText;
 
 /**
  * ①为emoji实体集创建emoji图片节点
@@ -66,7 +63,7 @@ public class EmojiDisplayer {
 			stackPane.getChildren().add(imageView);
 		} catch (IllegalArgumentException e) {
 			//fixme 得重新根据emoji图片目录生成对应的json文件
-//			System.out.println("未找到该图片资源!");
+			//logger.info("未找到该图片资源!");
 		}
 
 		return stackPane;
@@ -91,6 +88,6 @@ public class EmojiDisplayer {
 	 * @return java.lang.String
 	 */
 	private static String getEmojiImagePath(String hexStr) {
-		return "/ui/util/images/emoji/32/" + hexStr + ".png";
+		return "/util/images/emoji/32/" + hexStr + ".png";
 	}
 }

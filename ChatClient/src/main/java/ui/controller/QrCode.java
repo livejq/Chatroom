@@ -26,7 +26,7 @@ public class QrCode {
 
     @FXML
     private void initialize() {
-        String path = QrCode.class.getResource("../util/images/icons/qrCode-donation.jpg" +
+        String path = QrCode.class.getResource("/util/images/icons/qrCode-donation.jpg" +
                 "").toExternalForm();
         ImageView imageView = new ImageView(path);
         qrCodeScan.getChildren().add(imageView);

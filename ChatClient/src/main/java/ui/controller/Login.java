@@ -6,13 +6,10 @@ import com.jfoenix.controls.JFXTextField;
 import connector.ServerConnector;
 import control.ChatController;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -27,12 +24,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ui.view.AlertMaker;
 import ui.view.PaneLayer;
+import ui.view.TransferData;
 import util.LittleUtil;
 import util.RegexUtil;
-import ui.view.TransferData;
 
 import java.io.IOException;
-import java.rmi.NotBoundException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -149,13 +145,13 @@ public class Login {
     private void createAccount(MouseEvent event) {
         Stage accountSage = new Stage();
         accountSage.initStyle(StageStyle.TRANSPARENT);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/CreateAccount.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateAccount.fxml"));
         try {
             Scene scene = new Scene(fxmlLoader.load());
             CreateAccount createNewAccount = fxmlLoader.getController();
             createNewAccount.setAccountStage(accountSage);
             accountSage.setScene(scene);
-            accountSage.getIcons().add(new Image("/ui/util/images/icons/chatroom.png"));
+            accountSage.getIcons().add(new Image("/util/images/icons/chatroom.png"));
             accountSage.initOwner(primaryStage);
             accountSage.initModality(Modality.WINDOW_MODAL);
             accountSage.showAndWait();
@@ -171,12 +167,12 @@ public class Login {
 
     @FXML
     private void qrCodeAction(ActionEvent event) {
-        PaneLayer.loadPaneByPath("../fxml/QrCode.fxml", stackPane, loginPane);
+        PaneLayer.loadPaneByPath("/fxml/QrCode.fxml", stackPane, loginPane);
     }
 
     @FXML
     private void handleFindPassword(MouseEvent event) {
-        PaneLayer.loadPaneByPath("../fxml/FindPassword.fxml", stackPane, loginPane);
+        PaneLayer.loadPaneByPath("/fxml/FindPassword.fxml", stackPane, loginPane);
     }
     
     private void login(String email, String password, ChatController chatController) {
@@ -186,7 +182,7 @@ public class Login {
                 if (!chatController.isReserved(email)) {
                     Map<String, Object> msg = new HashMap<>(1);
                     msg.put("user", chatController.get(email));
-                    TransferData.loadPaneByPathWithData("../fxml/LoginProgress.fxml", stackPane, loginPane, msg, PaneLayer.getStorage());
+                    TransferData.loadPaneByPathWithData("/fxml/LoginProgress.fxml", stackPane, loginPane, msg, PaneLayer.getStorage());
                 } else {
                     AlertMaker.showMaterialDialog(stackPane, loginPane, "登录失败", "您已在另一台设备上登录");
                 }
@@ -195,7 +191,7 @@ public class Login {
                 AlertMaker.showMaterialDialog(stackPane, loginPane, "登录失败", "请检查您输入的邮箱或密码是否正确");
             }
         } catch (NullPointerException | IOException | SQLException e) {
-            logger.error("注册失败！", e);
+            logger.error("登录失败！", e);
         }
     }
 }

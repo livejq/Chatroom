@@ -145,16 +145,31 @@ public class Chatroom implements ChatObserver {
 
     @FXML
     private void initialize() {
-        //fixme 为搜索用户文本框添加监听(会重复执行createUserBox方法，待解决)
-        /*searchUser.textProperty().addListener(x -> {
-
-        });*/
+        //fixme 为搜索用户文本框添加监听(会出现两个相同的结果，中文才会，待解决)
+        searchUser.textProperty().addListener(x -> {
+            String key = searchUser.getText();
+            if (LittleUtil.equalsNull(key)) {
+                showClientListScroll.setVisible(true);
+                searchClientListScroll.setVisible(false);
+            }else {
+                searchClientListBox.getChildren().clear();
+                //将关键字与用户名进行匹配，将满足条件的列出来
+                List<User> searchResult = onlineUsers.stream()
+                        .filter(user1 -> user1.getNickname().contains(key) || user1.getEmail().contains(key))
+                        .collect(Collectors.toList());
+                //lambda去重，没效果
+                searchResult.stream().distinct().collect(Collectors.toList()).
+                        forEach(user1 -> createUserBox(user1, searchClientListBox));
+                showClientListScroll.setVisible(false);
+                searchClientListScroll.setVisible(true);
+            }
+        });
 
         //默认隐藏侧边栏
         hideAnimation();
         linkToAbout.setOnMouseClicked(event2 -> {
             try {
-                Desktop.getDesktop().browse(new URI("https://www.livejq.top"));
+                Desktop.getDesktop().browse(new URI("https://github.com/livejq/Chatroom"));
             } catch (IOException | URISyntaxException e) {
                 logger.error("链接打开失败...", e);
             }
@@ -171,9 +186,11 @@ public class Chatroom implements ChatObserver {
         //控件参数绑定（聊天面板高度 -> 外层滚动面板高度）使得实时显示新消息
         msgScrollPane.vvalueProperty().bind(chatBox.heightProperty());
         showClientListScroll.vvalueProperty().bind(showClientListBox.heightProperty());
+        searchClientListScroll.vvalueProperty().bind(searchClientListBox.heightProperty());
 
         //初始化Emoji显示面板，提前将表情加载进来，避免卡顿
-        FXMLLoader loader2 = LoaderMaker.createLoader("../fxml/EmojiSelector.fxml");
+        FXMLLoader loader2 = new FXMLLoader();
+        loader2.setLocation(this.getClass().getResource("/fxml/EmojiSelector.fxml"));
         try {
             VBox emojiPane = loader2.load();
             EmojiSelector emojiSelector = loader2.getController();
@@ -263,28 +280,7 @@ public class Chatroom implements ChatObserver {
 
     @FXML
     private void handleSearchField(KeyEvent event) {
-        String key = searchUser.getText();
-        searchClientListBox.getChildren().clear();
-        if (LittleUtil.equalsNull(key)) {
-            showClientListScroll.setVisible(true);
-            searchClientListScroll.setVisible(false);
-        } else if(RegexUtil.matchMail(key)) {
-            //每次添加前都需要清空
-            showClientListScroll.setVisible(false);
-            searchClientListScroll.setVisible(true);
-            //将关键字与用户名和其邮箱进行匹配，将满足条件的列出来
-            List<User> searchResult = onlineUsers.stream()
-                    .filter(user1 -> user1.getEmail().contains(key))
-                    .collect(Collectors.toList());
-            searchResult.forEach(user1 -> createUserBox(user1, searchClientListBox));
-        } else if (RegexUtil.matchName(key)) {
-            showClientListScroll.setVisible(false);
-            searchClientListScroll.setVisible(true);
-            List<User> searchResult = onlineUsers.stream()
-                    .filter(user1 -> user1.getNickname().contains(key))
-                    .collect(Collectors.toList());
-            searchResult.forEach(user1 -> createUserBox(user1, searchClientListBox));
-        }
+
     }
 
     @Override
@@ -293,7 +289,8 @@ public class Chatroom implements ChatObserver {
         SimpleDateFormat time = new SimpleDateFormat("HH:mm");
         //判断该消息的发送者是否为自己
         if (this.user.getEmail().equals(user.getEmail())) {
-            loader = LoaderMaker.createLoader("../fxml/BubbleSelf.fxml");
+            loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/fxml/BubbleSelf.fxml"));
             try {
                 HBox hBox = loader.load();
                 BubbleSelf bubbleSelf = loader.getController();
@@ -321,7 +318,8 @@ public class Chatroom implements ChatObserver {
                 logger.error("此消息发送异常...", e);
             }
         } else {
-            loader = LoaderMaker.createLoader("../fxml/BubblePublic.fxml");
+            loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/fxml/BubblePublic.fxml"));
             try {
                 HBox hBox = loader.load();
                 BubblePublic bubblePublic = loader.getController();
@@ -378,7 +376,8 @@ public class Chatroom implements ChatObserver {
 
     private void createUserBox(User user, VBox clientBox) {
         try {
-            FXMLLoader loader = LoaderMaker.createLoader("../fxml/OnlinePane.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/fxml/OnlinePane.fxml"));
             HBox onlineContainer = loader.load();
             OnlinePane onlinePane = loader.getController();
             Circle img = onlinePane.getAvatar();

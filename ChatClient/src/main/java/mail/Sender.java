@@ -25,7 +25,7 @@ public class Sender {
         Properties prop = new Properties();
 
         try {
-            InputStream fis = new FileInputStream(new File("ChatClient/config/mail.properties"));
+            InputStream fis = this.getClass().getResourceAsStream("/mail.properties");
             prop.load(fis);
         }catch (IOException e) {
             e.printStackTrace();

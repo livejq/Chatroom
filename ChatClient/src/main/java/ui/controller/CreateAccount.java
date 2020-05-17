@@ -1,6 +1,9 @@
 package ui.controller;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 import connector.ServerConnector;
 import control.ChatController;
 import enums.GenderEnum;
@@ -18,6 +21,8 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ui.view.AlertMaker;
 import util.CheckStrength;
 import util.LittleUtil;
@@ -45,6 +50,7 @@ public class CreateAccount {
     private ToggleGroup genderGroup;
     private File file;
     public static final String FAVICON = "ChatClient/users/";
+    private static final Logger logger = LoggerFactory.getLogger(Chatroom.class.getName());
 
     @FXML
     private StackPane stackPane;
@@ -94,9 +100,9 @@ public class CreateAccount {
         male.setToggleGroup(genderGroup);
         female.setToggleGroup(genderGroup);
         secret.setToggleGroup(genderGroup);
-        male.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../util/images/icons/male.png"))));
-        female.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../util/images/icons/female.png"))));
-        secret.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("../util/images/icons/secret.png"))));
+        male.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/util/images/icons/male.png"))));
+        female.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/util/images/icons/female.png"))));
+        secret.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/util/images/icons/secret.png"))));
 
         //监听密码强度并适当给予用户反馈
         txtPassword.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -215,8 +221,8 @@ public class CreateAccount {
                 txtPassword.requestFocus();
                 return;
             }
-            if (LittleUtil.equalsNull(nickname) || nickname.length() > 8 || LittleUtil.isSpecialChar(nickname)) {
-                AlertMaker.showMaterialAlert(stackPane, newAccountPane, "注册失败", "昵称最长8位且没有特殊字符！");
+            if (LittleUtil.equalsNull(nickname) || nickname.length() > 9 || LittleUtil.isSpecialChar(nickname)) {
+                AlertMaker.showMaterialAlert(stackPane, newAccountPane, "注册失败", "昵称最长9位且没有特殊字符！");
                 txtNickname.requestFocus();
                 return;
             }
@@ -229,19 +235,19 @@ public class CreateAccount {
                 return;
             }
         } catch (NullPointerException e) {
+            logger.error("注册空指针");
             AlertMaker.showMaterialAlert(stackPane, newAccountPane, "注册失败", "请将以上信息填写完整！");
             return;
         }
-
+        //fixme 这些图片日后必须改为网络存储，否则将无法打包成功
         File favicon = new File(FAVICON + email + ".png");
-        System.out.println(favicon.getAbsolutePath());
         try {
             if (!favicon.exists() && favicon.createNewFile()) {
                 ImageIO.write(SwingFXUtils.fromFXImage(new Image("file:" + file.getAbsolutePath()), null),
                         "png", favicon);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("添加用户头像出现异常，头像路径：{}", favicon.getAbsolutePath(), e);
         }
 
         User user = new User(email, password, nickname, gender, birth, FAVICON);
@@ -257,7 +263,7 @@ public class CreateAccount {
                 AlertMaker.showMaterialAlert(stackPane, newAccountPane, "注册失败", "该邮箱已注册");
             }
         } catch (RemoteException | SQLException e) {
-            //fixme 图片若存在出现异常
+            logger.error("注册异常！", e);
             AlertMaker.showMaterialAlert(stackPane, newAccountPane, "注册失败", "服务器出现异常，暂时无法注册，请见谅~");
         }
     }

@@ -6,8 +6,10 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Polygon?>
 
-<HBox alignment="BOTTOM_RIGHT" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.BubbleSelf">
-    <VBox fx:id="bubbleSelfPane" maxWidth="237.0">
+<HBox alignment="BOTTOM_LEFT" stylesheets="@../util/css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controller.BubblePublic">
+    <Circle fx:id="avatar" radius="24.0" />
+    <Polygon points="-44.0, 40.0, -38.0, 40.0, -38.0, 31.0" styleClass="bubblePolygon" />
+    <VBox fx:id="bubblePublicPane" maxWidth="235.0">
         <HBox>
             <Label fx:id="bubbleNameLabel" maxWidth="180.0" styleClass="nameLabel" text="我是一个没有名字的机器人" />
         </HBox>
@@ -17,6 +19,4 @@
             <Label fx:id="bubbleTimeLabel" styleClass="timeLabel" text="14:50" />
         </HBox>
     </VBox>
-    <Polygon points="-44.0, 40.0, -38.0, 40.0, -44.0, 31.0" styleClass="bubblePolygon" />
-    <Circle fx:id="avatar" radius="24.0" />
 </HBox>

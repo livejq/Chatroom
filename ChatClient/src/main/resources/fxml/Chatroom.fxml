@@ -25,18 +25,18 @@
             </Pane>
         </top>
         <left>
-            <AnchorPane fx:id="leftAnchorPane" prefWidth="260.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="leftAnchorPane" maxWidth="260.0" prefWidth="260.0" BorderPane.alignment="CENTER">
                 <ScrollPane fx:id="searchClientListScroll" styleClass="clientListScroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                     <VBox fx:id="searchClientListBox" styleClass="clientListBox" />
                 </ScrollPane>
                 <ScrollPane fx:id="showClientListScroll" styleClass="clientListScroll" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-                    <VBox fx:id="showClientListBox" styleClass="clientListBox" />
+                    <VBox fx:id="showClientListBox" styleClass="clientListBox"/>
                 </ScrollPane>
                 <Pane prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <TextField fx:id="searchUser" layoutX="74.0" layoutY="15.0" onKeyPressed="#handleSearchField" prefHeight="27.0" prefWidth="161.0" promptText="搜索用户" />
                     <MaterialDesignIconView fx:id="sideMenu" glyphName="MENU" layoutX="24.0" layoutY="41.0" onMouseClicked="#showFuncSide" size="35" />
                 </Pane>
-                <AnchorPane fx:id="funcSide" prefHeight="625.0" prefWidth="260.0" styleClass="funcSidePane">
+                <AnchorPane fx:id="funcSide" prefHeight="625.0" prefWidth="260.0" styleClass="funcSidePane" visible="false">
                     <AnchorPane layoutX="30.0" layoutY="14.0" prefHeight="200.0" styleClass="avatarPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <VBox layoutX="28.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="40.0">
                             <Circle fx:id="avatar" fill="DODGERBLUE" radius="26.0" stroke="BLACK" strokeType="INSIDE" />

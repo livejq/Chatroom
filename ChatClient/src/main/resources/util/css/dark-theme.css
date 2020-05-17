@@ -228,14 +228,14 @@
 .clientListScroll .scroll-bar:vertical .track {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-background-radius: 0em;
+    -fx-background-radius: 0;
 
 }
 
 .clientListScroll .scroll-bar:vertical .increment-button,
 .clientListScroll .scroll-bar:vertical .decrement-button {
     -fx-background-color: transparent;
-    -fx-background-radius: 0em;
+    -fx-background-radius: 0;
     -fx-padding: 0 0 10 0;
 
 }
@@ -254,60 +254,7 @@
 .clientListScroll:hover .scroll-bar:vertical .thumb {
     -fx-background-color: rgba(0, 0, 0, 0.6);
     -fx-background-insets: 4, 0, 0;
-    -fx-background-radius: 2em;
-}
-
-.clientListBox {
-    -fx-background-color: transparent;
-}
-
-.clientListBox, .clientListBox > .viewport {
-    -fx-background-color: transparent;
-}
-
-.clientListBox {
-    -fx-background-color: transparent;
-}
-
-.clientListBox > .viewport {
-    -fx-background-color: transparent;
-}
-
-.clientListBox .scroll-bar:vertical {
-    -fx-background-color: inherit;
-    -fx-unit-increment: 20;
-    -fx-block-increment: 20;
-}
-
-.clientListBox .scroll-bar:vertical .track {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-background-radius: 0em;
-}
-
-.clientListBox .scroll-bar:vertical .increment-button,
-.clientListBox .scroll-bar:vertical .decrement-button {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0em;
-    -fx-padding: 0 0 10 0;
-
-}
-
-.clientListBox .scroll-bar .increment-arrow,
-.clientListBox .scroll-bar .decrement-arrow {
-    -fx-shape: " ";
-    -fx-padding: 0;
-}
-
-.clientListBox .scroll-bar:vertical .thumb {
-    -fx-background-color: transparent;
-
-}
-
-.clientListBox:hover .scroll-bar:vertical .thumb {
-    -fx-background-color: -fx-msg-scroll-thumb;
-    -fx-background-insets: 4, 0, 0;
-    -fx-background-radius: 2em;
+    -fx-background-radius: 1em;
 }
 
 #rightAnchorPane {
@@ -335,13 +282,13 @@
 #msgScrollPane .scroll-bar:vertical .track {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-background-radius: 0em;
+    -fx-background-radius: 0;
 }
 
 #msgScrollPane .scroll-bar:vertical .increment-button,
 #msgScrollPane .scroll-bar:vertical .decrement-button {
     -fx-background-color: transparent;
-    -fx-background-radius: 0em;
+    -fx-background-radius: 0;
     -fx-padding: 0 0 10 0;
 
 }
@@ -360,7 +307,7 @@
 #msgScrollPane:hover .scroll-bar:vertical .thumb {
     -fx-background-color: -fx-msg-scroll-thumb;
     -fx-background-insets: 4, 0, 0;
-    -fx-background-radius: 2em;
+    -fx-background-radius: 1em;
 }
 
 .bottomPaneArea {
@@ -466,14 +413,14 @@
 
 /* bubble */
 .lineBoxRight {
-    -fx-pref-width: 365px;
-    -fx-padding: 20 10 20 10;
+    -fx-pref-width: 355px;
+    -fx-padding: 20 0 20 0;
     -fx-alignment: center-right;
 }
 
 .lineBoxLeft {
-    -fx-pref-width: 365px;
-    -fx-padding: 20 10 20 10;
+    -fx-pref-width: 355px;
+    -fx-padding: 20 0 20 10;
     -fx-alignment: center-left;
 }
 
@@ -526,11 +473,14 @@
     -fx-text-fill: -fx-primary-text;
 }
 
+.clientListBox {
+    -fx-alignment: center;
+}
+
 .onlineContainer {
     -fx-background-color: inherit;
     -fx-alignment: center-left;
-    -fx-spacing: 10px;
-    -fx-padding: 0 10 0 0;
+    -fx-padding: 0 3 0 0;
 }
 
 .onlineContainer:hover {
