@@ -1,5 +1,7 @@
 <h1 align="center">聊吧</h1>
+
 <br>
+
 <p align="center">
   	<a href="http://hits.dwyl.io/livejq/Chatroom"><img alt="HitCount" src="http://hits.dwyl.io/livejq/Chatroom.svg"></a>
   	<a href="https://github.com/livejq/Chatroom/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/livejq/Chatroom.svgi"></a>
@@ -9,12 +11,15 @@
 	<a href="https://bitbucket.org/Jerady/fontawesomefx/downloads/"><img alt="SceneBuilder" src="https://img.shields.io/badge/SceneBuilder-8.5.0-9cf"></a>
 	<a href="https://github.com/livejq/Chatroom/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/livejq/Chatroom.svg"></a>
 </p>
+
 <br>
+
 <p align="center">
 <span>适合JavaFX新手练习的聊天室，UI采用了<a href="https://github.com/jfoenixadmin/JFoenix" target="_blank">JFoenix</a></span>
 </p>
 
 <hr>
+
 
 刚上手JavaFX？想对JavaFX做个系统性的了解？想来点简单的项目练练手？那这个项目就非常适合您的了。这个项目主要以JavaFX客户端设计为主，服务端采用Java RMI来进行简单的远程连接请求。服务端通过客户端对象数组对每个客户端进行管控，包括UI界面的更新；数据库中只需添加一张用户表用来验证用户登录即可。
 
@@ -26,19 +31,23 @@
 
 <hr>
 
+
 ![Progress Bar](https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/progressBar.jpg)
 
 <hr>
 
+
 ![Chatroom Login](https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/chatroom_ui.jpg)
 
 <hr>
-
 <img src="https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/email.png" style="width:375px;height:667px;"  >
+
 
 <hr>
 
+
 <img src="https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/email2.png" style="width:375px;height:667px;" >
+
 
 
 ## 内容列表
@@ -48,6 +57,7 @@
   - [常规登录](###常规登录)
   - [聊天细节](###聊天细节)
   - [RMI通信原理](###RMI通信原理)
+- [安装配置](##安装配置)
 - [注意事项](##注意事项)
 - [致谢](##致谢)
 - [参与贡献方式](##参与贡献方式)
@@ -56,6 +66,7 @@
 
 
 ## 简单介绍
+
 <br>
 
 > <a href="https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/Chatroom_Sequence_Diagram.svg">项目时序图</a>
@@ -63,6 +74,7 @@
 
 
 ### 界面设计
+
 <br>
 
 ![Chatroom Fxml](https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/chatroomfxml.png)
@@ -82,6 +94,7 @@
 
 
 ### 常规登录
+
 <br>
 
 ![Chatroom Login](https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/login.jpg)
@@ -89,12 +102,14 @@
 用户先注册（新用户），接着进行登录操作。若忘记密码，还可以通过填入邮箱并获取验证码的方式，设置新密码。成功登陆后进入聊天室。也许你会说，聊天室要啥注册啊，直接让用户起个用户名，验证没有重复之后直接进入聊天吧。若没有意外的话，确实应该如此。但由于考虑到以后的改版，为实现N-to-N的聊天提前做好准备吧。若一开始就把自己局限起来，那还有什么发展可言嘞。
 
 ### 忘记密码
+
 <br>
 
 忘记密码需要实现SMTP的邮件服务。当用户填写完邮箱地址后点击获取验证码，则客户端向其发送随机4位数字验证码，每60秒刷新一次。填完验证码和自己的新密码后点击确定，验证无误后弹出修改成功的提示。这里可以验证用户输入的邮箱是否已注册，但无法在注册中确保用户的邮箱是否为真实邮箱，所以有可能发送失败。根源还是在于用户注册时该如何确保其输入了真实的邮箱地址。“市面上”的常规做法是当点击注册并验证无误后，向该邮箱地址发送一条确认注册的网址链接。用户点击验证后完成最终的注册。这需要额外的Http服务支持，所以暂时排除不了此Bug。
 
 
 ### 聊天细节
+
 <br>
 
 ![Chatroom Process](https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/chatroom.jpg)
@@ -103,6 +118,7 @@
 
 
 ### RMI通信原理
+
 <br>
 
 ![RMI](https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/RMI.jpg)
@@ -110,7 +126,49 @@
 RMI技术的核心就是可以为客户端动态生成本地的Stub代理，而注册表则作为一种辅助工具提供协助连接，可以在本地或远端提供。服务端开启服务后，首先启动注册表并将自己声明的服务以一个别名注册到注册表中。当客户端向服务端发起请求时，将首先通过远端的注册表查找自己所请求的服务，若存在，则开始建立连接并将此服务在客户端本地生成一个Stub代理。需要注意的是，除了基本类型不用序列化外，其它引用类型必须要实现Serializable接口。服务端若需要对外提供服务，则必须实现Remote接口或继承UnicastRemoteObject，未在Remote接口中声明的方法则不会暴露给请求者 。
 
 
+
+## 安装配置
+
+<br>
+
+> 我的环境
+
+- MySQL 5.7.29
+- Intellij IDEA
+
+<br>
+
+> 导入ChatClient、ChatCommon和ChatServer这三个模块到 Intellij IDEA
+
+
+
+首先创建一个Empty Project项目，进入之后点击File -> New -> Module from Existing Sources，依次找到上面三个模块路径即可导入成功。
+
+<br>
+
+> 在MySQL中创建一个数据库并导入如下users表
+
+
+
+```mysql
+CREATE TABLE users(
+	email VARCHAR(15) PRIMARY KEY,
+	password VARCHAR(100) NOT NULL,
+	nickname VARCHAR(30) NOT NULL,
+	gender VARCHAR (7) NOT NULL,
+	birth VARCHAR(30) NOT NULL,
+	avatar VARCHAR(100) NOT NULL
+);
+```
+
+<br>
+
+最后是修改数据库连接参数（用户名和密码等），将config目录下settings.properties文件中的ip地址改为你的局域网ip即可。
+
+
+
 ## 注意事项
+
 <br>
 
 - 服务端对外提供的接口需要继承Remote接口
@@ -143,7 +201,7 @@ chatController = (ChatController) Naming.lookup(url);
 <br>
 
 - 第一次进行连接的时候可能会出现无法连接的问题，那是由于服务器和客户端都在本地，而在配置中声明了127.0.0.1，这在host文件中映射的是localhost。当客户端向服务器发请连接请求时，注册表发现客户端想要连接的竟然是本地自己，所以导致阻塞，造成无法转接，将其改为局域网IP即可。
-
+- 当无法启用多个客户端时，可尝试在VM options中添加：`-Djava.rmi.server.hostname=局域网ip`
 - 当客户端断开后再次进行连接时出现连接失败，只能重启服务器才能解决。这是由于需要将引用类型序列化后进行传输，但若没有指定序列号，系统每次会随机生成一个。因此，客户端一旦重启，则使得与服务端的序列号不同。解决办法是，为需要序列化的类手动声明序列号，例如：User类。
 
 ```java
@@ -162,7 +220,9 @@ public class User implements Serializable {
 ```
 
 
+
 ## 致谢
+
 <br>
 
 本项目由[Oshan96](https://github.com/Oshan96/ChatRoomFX)衍生而来，只为学习交流使用，在此感谢万分！
@@ -170,6 +230,7 @@ public class User implements Serializable {
 
 
 ## 参与贡献方式
+
 <br>
 
 欢迎[issuess](https://github.com/livejq/Chatroom/issues)
@@ -177,7 +238,7 @@ public class User implements Serializable {
 
 
 ## 许可证
+
 <br>
 
 @[MIT](https://github.com/livejq/Chatroom/blob/master/LICENSE) License
-
