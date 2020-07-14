@@ -4,7 +4,7 @@
 
 <p align="center">
   	<a href="http://hits.dwyl.io/livejq/Chatroom"><img alt="HitCount" src="http://hits.dwyl.io/livejq/Chatroom.svg"></a>
-  	<a href="https://github.com/livejq/Chatroom/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/livejq/Chatroom.svgi"></a>
+  	<a href="https://github.com/livejq/Chatroom/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/livejq/Chatroom.svg"></a>
   	<a href="https://search.maven.org/remotecontent?filepath=com/jfoenix/jfoenix/8.0.8/jfoenix-8.0.8.jar"><img alt="JFoenix" src="https://img.shields.io/badge/JFoenix-8.0.8-red"></a>
 	<a href="https://www.oracle.com/java/technologies/javase-downloads.html"><img alt="Java Version" src="https://img.shields.io/badge/Java-1.8-important"></a>
 	<a href="https://bitbucket.org/Jerady/fontawesomefx/downloads/"><img alt="fontawesomefx Version" src="https://img.shields.io/badge/fontawesomefx-8.9-blue"></a>
