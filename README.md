@@ -40,13 +40,10 @@
 ![Chatroom Login](https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/chatroom_ui.jpg)
 
 <hr>
-<img src="https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/email.png" style="width:375px;height:667px;"  >
+<img src="https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/email.png" style="margin:10px auto;"  >
 
 
 <hr>
-
-
-<img src="https://raw.githubusercontent.com/livejq/blog-comment-repo/master/Chatroom/email2.png" style="width:375px;height:667px;" >
 
 
 
